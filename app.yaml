@@ -1,0 +1,13 @@
+application: drinkdigest
+version: 1
+runtime: python
+api_version: 1
+
+handlers:
+
+  
+- url: /.*
+  script: drink_main.py
+
+
+
