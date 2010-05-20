@@ -6,7 +6,6 @@ from google.appengine.ext import webapp
 from google.appengine.ext.webapp.util import run_wsgi_app
 from google.appengine.ext.webapp import template
 from google.appengine.ext import db
-from google.appengine.api import users
 
 class MainPage(webapp.RequestHandler):
     def get(self):
@@ -15,6 +14,7 @@ class MainPage(webapp.RequestHandler):
         template_args={}
         self.response.out.write(template.render(path, template_args))
 
+# Initialize webb application. Assosiates index URL with MainPage class
 application = webapp.WSGIApplication(
                                     [('/', MainPage)],
                                      debug=True)
