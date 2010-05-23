@@ -24,4 +24,5 @@ class Login(webapp.RequestHandler):
             set_current_user(user)
             self.redirect("/")
         else:
+            # TODO: return to filled login form with error message
             self.response.out.write("FAIL")
