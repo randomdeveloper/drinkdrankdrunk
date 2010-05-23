@@ -1,8 +1,9 @@
 import logging
+
 from google.appengine.ext import webapp
 from google.appengine.ext.webapp import template
 
-from models.users import User
+from current_session import set_current_user
 
 class Register(webapp.RequestHandler):
     def get(self):
@@ -21,6 +22,8 @@ class Register(webapp.RequestHandler):
         # save new user
         user.put()
 
+        # put him into session
+        set_current_user(user)
+
         # redirect to the home page
-        self.redirect("/")
-        
+        self.redirect("/")        

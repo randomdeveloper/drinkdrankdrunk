@@ -14,12 +14,36 @@
     padding:25px;
     margin:25px;
     }
+    
+.greeting{
+  font-size: xx-large;
+  vertical-align: sub;
+  align: center;
+}
+
+#signIn{
+  width: 100%;
+  text-align: right;
+}
+
+#signIn a{
+  padding-right: 1em;
+}
 </style>
 
+<div id="signIn">
+  <A HREF="/login">Sign in</A>
+  <A HREF="/register">Sign up</A>
+</div>
+
 <div id="box">
-<p align="center" style="vertical-align: sub">
-<FONT size=7 >What are you having today, %username%?</>
-</p>
+  <p class="greeting">
+    {% if user_name %}
+      What are you having today, {{ user_name }}?
+    {% else %}
+      What are you having today, %username%?
+    {% endif %}
+  </p>
 </div>
 
 </body>
