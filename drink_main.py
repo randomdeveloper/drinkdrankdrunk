@@ -8,10 +8,14 @@ from google.appengine.ext.webapp import template
 from google.appengine.ext import db
 
 from controllers.home import MainPage
+from controllers.register import Register
+from controllers.login import Login
 
 # Initialize webb application. Assosiates index URL with MainPage class
 application = webapp.WSGIApplication(
-                                    [('/', MainPage)],
+                                    [('/', MainPage),
+                                    ('/register', Register),
+                                    ('/login', Login)],
                                      debug=True)
 def main():
     run_wsgi_app(application)
