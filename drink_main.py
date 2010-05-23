@@ -7,12 +7,7 @@ from google.appengine.ext.webapp.util import run_wsgi_app
 from google.appengine.ext.webapp import template
 from google.appengine.ext import db
 
-class MainPage(webapp.RequestHandler):
-    def get(self):
-        # This generates the sample page 
-        path = os.path.join(os.path.dirname(__file__), 'index.html')
-        template_args={}
-        self.response.out.write(template.render(path, template_args))
+from controllers.home import MainPage
 
 # Initialize webb application. Assosiates index URL with MainPage class
 application = webapp.WSGIApplication(
