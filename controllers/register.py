@@ -5,6 +5,8 @@ from google.appengine.ext.webapp import template
 
 from current_session import set_current_user
 
+from models.users import User
+
 class Register(webapp.RequestHandler):
     def get(self):
         self.response.out.write(template.render("views/register.html", {}))

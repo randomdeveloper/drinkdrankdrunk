@@ -2,6 +2,8 @@ from google.appengine.ext import webapp
 from google.appengine.ext.webapp import template
 from google.appengine.ext import db
 
+from current_session import set_current_user
+
 from models.users import User
 
 class Login(webapp.RequestHandler):
@@ -19,6 +21,7 @@ class Login(webapp.RequestHandler):
                 .get()
 
         if user:
-            self.response.out.write("OK")
+            set_current_user(user)
+            self.redirect("/")
         else:
             self.response.out.write("FAIL")
