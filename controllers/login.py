@@ -11,12 +11,12 @@ class Login(webapp.RequestHandler):
         self.response.out.write(template.render("views/login.html", {}))
         
     def post(self):
-        email = self.request.get("email")
+        username = self.request.get("username")
         password = self.request.get("password")
 
-        # load user by email and password...
+        # load user by username and password...
         user = User.all()\
-                .filter("email =", email)\
+                .filter("username =", username)\
                 .filter("password =", password)\
                 .get()
 

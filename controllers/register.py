@@ -12,14 +12,16 @@ class Register(webapp.RequestHandler):
         self.response.out.write(template.render("views/register.html", {}))
         
     def post(self):
-        email = self.request.get("email")
+        username = self.request.get("username")
         password = self.request.get("password")
+        email = self.request.get("email")
 
         # todo: add validation
         user = User()
-        user.email = email
+        user.username = username
         # todo: hash password
         user.password = password
+        user.email = email
 
         # save new user
         user.put()

@@ -10,5 +10,5 @@ class MainPage(webapp.RequestHandler):
         
         user = current_user()
         if user:
-            model["user_name"] = user.email
+            model["user_name"] = user.username
         self.response.out.write(template.render('views/index.html', model))
