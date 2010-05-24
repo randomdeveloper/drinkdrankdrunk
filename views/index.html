@@ -33,8 +33,20 @@
 
 <!-- TODO: add sign out -->
 <div id="signIn">
-  <A HREF="/login">Sign in</A>
+{% if user_name %}
+  <h1>Logged in as {{ user_name }}</h1>
+  <A HREF="/signout">Sign out</A>
+{% else %}
+ <h1>Login</h1>
+  <form method="post" action=".">    
+    <div>Username</div>
+    <input type="text" name="username"/>
+    <div>Password</div>
+    <input type="password" name="password"/>
+    <div><input type="submit" value="Login"/></div>    
+  </form>
   <A HREF="/register">Sign up</A>
+{% endif %}
 </div>
 
 <div id="box">

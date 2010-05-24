@@ -11,6 +11,10 @@ def current_user():
     return session[session_key]
   else:
     return None
+
+def delete_session():
+    session = Session()
+    session.delete()
   
 def set_current_user(user):
   session = Session()
