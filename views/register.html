@@ -1,15 +1,39 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 
   4.0 Transitional//EN">
 <html>
+<style type="text/css">
+.error{
+  color: red;
+}
+</style>
+
 <body>    
   <h1>Register</h1>    
   <form method="post">            
     <div>Username</div>
-    <input type="text" name="username"/>
+    <input type="text" name="username" value="{{model.user_name}}"/>
+    {% if model.user_name_empty%}    
+    <span class="error">please provide user name</span>
+    {% endif %}
+    
     <div>Email</div>
-    <input type="text" name="email"/>
+    <input type="text" name="email" value="{{model.email}}"/>
+    {% if model.email_invalid%}    
+    <span class="error">please enter a valid email</span>
+    {% endif %}
+    
     <div>Password</div>
     <input type="password" name="password"/>    
+    {% if model.password_empty%}    
+    <span class="error">please enter a password</span>
+    {% endif %}
+    
+    <div>Confirm password</div>
+    <input type="password" name="confirm_password"/>    
+    {% if model.passwords_dont_match%}    
+    <span class="error">confirmation doesn't match the password</span>
+    {% endif %}
+    
     <div><input type="submit" value="Register"/></div>    
   </form>
 </body>
