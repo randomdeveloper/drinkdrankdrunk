@@ -5,10 +5,14 @@
   <h1>Login</h1>
   <form method="post">    
     <div>Username</div>
-    <input type="text" name="username"/>
+    <input type="text" name="username" value="{{ user_name }}"/>
     <div>Password</div>
-    <input type="password" name="password"/>
+    <input type="password" name="password" value="{{ password }}"/>
     <div><input type="submit" value="Login"/></div>    
   </form>
+{% ifequal login "fail" %}
+Login failed. Wrong password or username.
+{% endifequal %}
+
 </body>
 </html>

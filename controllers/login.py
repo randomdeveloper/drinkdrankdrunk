@@ -8,21 +8,27 @@ from models.users import User
 
 class Login(webapp.RequestHandler):
     def get(self):
-        self.response.out.write(template.render("views/login.html", {}))
+        model = {}
+        model["user_name"] = ""
+        model["password"] = ""
+        self.response.out.write(template.render("views/login.html", model))
         
     def post(self):
+        model = {}
         username = self.request.get("username")
         password = self.request.get("password")
+        
+        model["user_name"] = username
+        model["password"] = password
 
         # load user by username and password...
         user = User.all()\
                 .filter("username =", username)\
                 .filter("password =", password)\
                 .get()
-
         if user:
             set_current_user(user)
             self.redirect("/")
         else:
-            # TODO: return to filled login form with error message
-            self.response.out.write("FAIL")
+            model["login"] = "fail"
+            self.response.out.write(template.render("views/login.html", model))
