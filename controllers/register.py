@@ -57,6 +57,8 @@ class RegisterModel:
     user_name = ""
     email = ""
 
+    foo = "<b>Aaa"
+
     user_name_empty = False
     email_invalid = False
     password_empty = False

@@ -9,15 +9,15 @@
 
 <body>    
   <h1>Register</h1>    
-  <form method="post">            
+  <form method="post">                
     <div>Username</div>
-    <input type="text" name="username" value="{{model.user_name}}"/>
+    <input type="text" name="username" value="{{model.user_name|escape}}"/>
     {% if model.user_name_empty%}    
     <span class="error">please provide user name</span>
     {% endif %}
     
     <div>Email</div>
-    <input type="text" name="email" value="{{model.email}}"/>
+    <input type="text" name="email" value="{{model.email|escape}}"/>
     {% if model.email_invalid%}    
     <span class="error">please enter a valid email</span>
     {% endif %}
