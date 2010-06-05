@@ -4,26 +4,16 @@ from google.appengine.ext import webapp
 from google.appengine.ext.webapp import template
 
 from current_session import set_current_user
-
+from request_model_binder import model_from_request
 from models.users import User
 
 class Register(webapp.RequestHandler):
     def get(self):
         model = RegisterModel()
         self.view(model)
-
-    # todo: pass form data as method parameters        
+    
     def post(self):
-        username = self.request.get("user_name")
-        password = self.request.get("password")
-        confirm_password = self.request.get("confirm_password")
-        email = self.request.get("email")
-        
-        model = RegisterModel()
-        model.user_name = username
-        model.email = email
-        model.password = password
-        model.confirm_password = confirm_password
+        model = model_from_request(self.request, RegisterModel)
 
         # validate data
         if not model.validate():
@@ -33,10 +23,10 @@ class Register(webapp.RequestHandler):
 
         # save new user        
         user = User()
-        user.username = username
+        user.username = model.user_name
+        user.email = model.email
         # todo: hash password
-        user.password = password
-        user.email = email
+        user.password = model.password
 
         user.put()
 
@@ -50,17 +40,7 @@ class Register(webapp.RequestHandler):
         self.response.out.write(template.render("views/register.html", {"model": model}))
 
         
-class RegisterModel:
-    user_name = ""
-    email = ""
-    password = ""
-    confirm_password = ""
-
-    user_name_empty = False
-    email_invalid = False
-    password_empty = False
-    passwords_dont_match = False
-
+class RegisterModel:  
     def validate(self):
         self.user_name_empty = (self.user_name == "")
         # todo: email validation (user@domain etc..)
