@@ -11,7 +11,7 @@
   <h1>Register</h1>    
   <form method="post">                
     <div>Username</div>
-    <input type="text" name="username" value="{{model.user_name|escape}}"/>
+    <input type="text" name="user_name" value="{{model.user_name|escape}}"/>
     {% if model.user_name_empty%}    
     <span class="error">please provide user name</span>
     {% endif %}
