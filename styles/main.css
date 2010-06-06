@@ -13,6 +13,11 @@ h1{
     margin-right: auto;    
 }
 
+.account fieldset{
+  width: 32em;
+  padding-left: 2em;
+}
+
 .account label {	
   float: left;
 	width: 12em;
@@ -28,11 +33,6 @@ h1{
 .account input[type=submit]{
   width: auto;  
   height: auto;
-}
-
-.account fieldset{
-  width: 30em;
-  padding-left: 2em;
 }
 
 .account div{
