@@ -1,40 +1,44 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 
-  4.0 Transitional//EN">
-<html>
-<style type="text/css">
-.error{
-  color: red;
-}
-</style>
+{% extends "base.html" %}
 
-<body>    
-  <h1>Register</h1>    
+{% block content %}
+  <h1>Sign up is easy!</h1>    
+  <div class="account">
   <form method="post">                
-    <div>Username</div>
+    <fieldset>
+    <div>
+    <label for="user_name">Username</label>
     <input type="text" name="user_name" value="{{model.user_name|escape}}"/>
     {% if model.user_name_empty%}    
     <span class="error">please provide user name</span>
     {% endif %}
+    </div>
     
-    <div>Email</div>
+    <div>
+    <label for="email">Email</label>
     <input type="text" name="email" value="{{model.email|escape}}"/>
     {% if model.email_invalid%}    
     <span class="error">please enter a valid email</span>
     {% endif %}
+    </div>
     
-    <div>Password</div>
+    <div>
+    <label for="password">Password</label>
     <input type="password" name="password"/>    
     {% if model.password_empty%}    
     <span class="error">please enter a password</span>
     {% endif %}
+    </div>
     
-    <div>Confirm password</div>
+    <div>
+    <label for="confirm_password">Confirm password</label>    
     <input type="password" name="confirm_password"/>    
     {% if model.passwords_dont_match%}    
-    <span class="error">confirmation doesn't match the password</span>
+    <span class="error">confirmation doesn't match</span>
     {% endif %}
+    </div>
     
     <div><input type="submit" value="Register"/></div>    
+    </fieldset>
   </form>
-</body>
-</html>
+  </div>
+{% endblock %}

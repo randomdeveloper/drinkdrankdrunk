@@ -1,0 +1,57 @@
+body{  
+    font-family: georgia;
+    background-color: #fcf5f0;    
+}    
+
+h1{
+  font-family: helvetica;
+}    
+    
+#main{
+    width: 50em;
+    margin-left: auto;
+    margin-right: auto;    
+}
+
+.account label {	
+  float: left;
+	width: 12em;
+	font-size: 130%;    		
+}
+
+.account input{
+  height: 28px;
+  width: 15em;
+  font-size: 130%;
+}
+
+.account input[type=submit]{
+  width: auto;  
+  height: auto;
+}
+
+.account fieldset{
+  width: 30em;
+  padding-left: 2em;
+}
+
+.account div{
+  padding-bottom: 10px;
+}
+
+.greeting{  
+  font-size: 200%;  
+  text-align: center;  
+}
+
+#signIn{    
+  text-align: right;
+}
+
+#signIn a{
+  padding-left: 1em;
+}
+
+.error{
+  color: red;
+}

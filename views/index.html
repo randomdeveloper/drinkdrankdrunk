@@ -1,55 +1,24 @@
-<html>
-<body>
-<title>Drink Drank Drunk</title>
+{% extends "base.html" %}
 
-<style type="text/css">
-
-#box {
-    position:absolute;
-    border:solid black 0px;
-    top:20%;
-    right:25%;
-    bottom:25%;
-    left:25%;
-    padding:25px;
-    margin:25px;
-    }
-    
-.greeting{
-  font-size: xx-large;
-  vertical-align: sub;
-  align: center;
-}
-
-#signIn{
-  width: 100%;
-  text-align: right;
-}
-
-#signIn a{
-  padding-right: 1em;
-}
-</style>
-
-<!-- TODO: add sign out -->
+{% block top %}
 <div id="signIn">
-{% if user_name %}
-  <A HREF="/signout">Sign out</A>
-{% else %}
-  <A HREF="/login">Sign in</A>
-  <A HREF="/register">Sign up</A>
-{% endif %}
-</div>
+  {% if user_name %}
+    <A HREF="/signout">Sign out</A>
+  {% else %}
+    <A HREF="/login">Sign in</A>
+    <A HREF="/register">Sign up</A>
+  {% endif %}
+</div> 
+{% endblock %}
 
-<div id="box">
-  <p class="greeting">
-    {% if user_name %}
-      What are you having today, {{ user_name }}?
-    {% else %}
-      What are you having today, %username%?
-    {% endif %}
-  </p>
-</div>
-
-</body>
-</html>
+{% block content %}   
+    <p class="greeting">
+      {% if user_name %}
+        What are you having today, {{ user_name }}?
+      {% else %}
+        What are you having today, %username%?
+      {% endif %}
+    </p>   
+    
+    <img src="images/main.jpg"/>  
+{% endblock %}

@@ -15,9 +15,8 @@ class Register(webapp.RequestHandler):
     def post(self):
         model = model_from_request(self.request, RegisterModel)
 
-        # validate data
+        # validate data; on error, redisplay form with error messages
         if not model.validate():
-            # on error, redisplay form with error messages
             self.view(model)
             return
 

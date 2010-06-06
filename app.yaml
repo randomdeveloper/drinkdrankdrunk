@@ -4,10 +4,11 @@ runtime: python
 api_version: 1
 
 handlers:
-
+- url: /styles
+  static_dir: styles
   
+- url: /images
+  static_dir: images
+    
 - url: /.*
   script: drink_main.py
-
-
-
